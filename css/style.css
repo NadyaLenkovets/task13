@@ -678,7 +678,7 @@ h6 {
 
 .cart-block.active {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   transform: translateX(-100%);
   border-radius: 0px 0px 0px 0px;
   border-right: 1px solid #393C49;
@@ -1040,6 +1040,17 @@ h6 {
     border-radius: 16px;
     display: none;
   }
+}
+
+.payment::after {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 100%;
+  background-color: var(--dark);
+  position: absolute;
+  top: 0;
+  left: -5px;
 }
 
 .payment.active {
