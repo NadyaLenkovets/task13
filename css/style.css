@@ -87,7 +87,7 @@ h6 {
 
 .sidebar {
   height: 100%;
-  width: 104px;
+  flex: 0 0 8.6%;
   background-color: var(--dark);
   border-radius: 16px 0px 0px 16px;
   padding: 24px 0px 24px 0px;
@@ -95,9 +95,21 @@ h6 {
   flex-direction: column;
 }
 
+@media (max-width: 1191px) {
+  .sidebar {
+    flex: 0 0 6.6%;
+  }
+}
+
 .logo {
   padding: 0px 24px 0px;
   margin: 0px 0px 30px 0px;
+}
+
+@media (max-width: 1191px) {
+  .logo {
+    padding: 0px 12px 0px 12px;
+  }
 }
 
 .nav {
@@ -106,6 +118,12 @@ h6 {
 
 .nav-list {
   padding: 0px 0px 0px 12px;
+}
+
+@media (max-width: 1191px) {
+  .nav-list {
+    padding: 0px 0px 0px 0px;
+  }
 }
 
 .nav-list__item {
@@ -195,6 +213,12 @@ h6 {
   cursor: pointer;
 }
 
+@media (max-width: 1191px) {
+  .exit {
+    margin: 0px 0px 0px 12px;
+  }
+}
+
 .exit:hover {
   background: var(--accent);
   box-shadow: 0px 8px 24px rgba(234, 124, 105, 0.32);
@@ -206,8 +230,14 @@ h6 {
 
 .central {
   height: 100%;
-  flex: 0 0 57%;
+  flex: 0 0 56%;
   padding: 24px 0px 0px 0px;
+}
+
+@media (max-width: 1191px) {
+  .central {
+    flex: 0 0 57%;
+  }
 }
 
 .central-top {
@@ -428,6 +458,12 @@ h6 {
   background-color: var(--dark);
   border-radius: 0px 16px 16px 0px;
   transition: 0.4s ease;
+}
+
+@media (max-width: 1191px) {
+  .cart-block {
+    flex: 0 0 35.9%;
+  }
 }
 
 .cart-block.active {
@@ -1107,17 +1143,10 @@ body {
 .wrapper {
   width: 100%;
   max-width: 1194px;
-  width: 1194px;
   height: 834px;
   margin: 0 auto;
-  padding: 50px 15px 0px 15px;
+  padding: 50px 0px 0px 0px;
   overflow: hidden;
-}
-
-@media (max-width: 767px) {
-  .wrapper {
-    padding: 50px 10px 10px 10px;
-  }
 }
 
 .frame {
