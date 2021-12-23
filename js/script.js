@@ -277,11 +277,19 @@ function activateAmountInputs() {
    cartAmountInputs = document.getElementsByClassName('cart__amount-input');
    for (let cartAmountInput of cartAmountInputs) {
       cartAmountInput.addEventListener('input', function() {
-         let price = convertPrice(this.parentElement.previousElementSibling.lastElementChild.innerHTML);
-         let newSum = (this.value * price).toFixed(2);
+         console.log(typeof(this.value));
+         if (isNaN(this.value)) {
+            cartError.innerHTML = 'Not a number.'
+            cartError.classList.add('active');
+            setTimeout(hideCartError, 3000);
+         } else {
+            let price = convertPrice(this.parentElement.previousElementSibling.lastElementChild.innerHTML);
+            let newSum = (this.value * price).toFixed(2);
 
-         this.parentElement.nextElementSibling.innerHTML = `$ ${newSum}`;
-         subTotalCount();
+            this.parentElement.nextElementSibling.innerHTML = `$ ${newSum}`;
+            subTotalCount();
+         }
+         
       })
    };
 }

@@ -89,7 +89,7 @@ h6 {
   height: 100%;
   flex: 0 0 8.6%;
   background-color: var(--dark);
-  border-radius: 16px 0px 0px 16px;
+  border-radius: 16px 16px 16px 16px;
   padding: 24px 0px 0px 0px;
   display: flex;
   flex-direction: column;
@@ -99,12 +99,6 @@ h6 {
 @media (max-width: 1191px) {
   .sidebar {
     flex: 0 0 6.6%;
-  }
-}
-
-@media (max-width: 991px) {
-  .sidebar {
-    border-radius: 16px;
   }
 }
 
