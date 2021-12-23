@@ -14,6 +14,9 @@ const cart = document.querySelector('.cart');
 const subTotalSum = document.querySelector('.sub-total__sum');
 const backArrow = document.querySelector('.cart-block__back-arrow');
 const cancelButton = document.querySelector('.cancel__btn');
+const cartError = document.querySelector('.cart-error');
+const paymentError = document.querySelector('.payment-error');
+const burgerMenu = document.querySelector('.burger-menu');
 
 let navListItems = document.querySelectorAll('.nav-list__item');
 let tabNavItems = document.querySelectorAll('.tabs-nav__item');
@@ -21,6 +24,7 @@ let collection = document.getElementsByClassName('card'); // коллекция 
 let cartAmountInputs = document.getElementsByClassName('cart__amount-input'); // коллекция amountInputs
 let cartItemsDelete = document.getElementsByClassName('cart-item__delete'); // коллекция deleteCartItem
 let cartItemSums = document.getElementsByClassName('cart-item__sum');  // коллекция cartItemSums
+let cartItems = document.getElementsByClassName('cart-item');  // коллекция cartItems
 
 //  ================  NAV   ================  //
 
@@ -134,7 +138,7 @@ searchInput.addEventListener('input', function() {
 
       if (counter == collection.length) {
          error.classList.add('show');
-         setTimeout(hideError, 2000);
+         setTimeout(hideError, 3000);
       }
    }
 })
@@ -148,13 +152,28 @@ function hideError() {
 
 //  ================  CART BUTTON   ================  //
 
-cartButton.addEventListener('click', function() {
-   frame.classList.add('hidden');
-   payment.classList.add('active');
-   cartBlock.classList.add('active');
-})
+cartButton.addEventListener('click', checkEmptyCart);
 
+function checkEmptyCart() {
+   cartItems = document.getElementsByClassName('cart-item');
+   if (cartItems.length == 0) {
+      cartError.classList.add('active');
+      setTimeout(hideCartError, 3000);
+   } else {
+      frame.classList.add('hidden');
+      payment.classList.add('active');
+      cartBlock.classList.add('active');
+      scrollToPayment();
+   }
+}
 
+function scrollToPayment() {
+   payment.scrollIntoView({behavior: "smooth"});
+}
+
+function hideCartError() {
+   cartError.classList.remove('active');
+}
 
 
 // ============  DROPDOWN CUSTOMIZATION  ============  //
@@ -172,17 +191,7 @@ multiDefault();
 
 
 
-// ============  POPUP  ============  //
 
-confirmBtn.addEventListener('click', function() {
-   popup.classList.add('open');
-})
-
-popup.addEventListener("click", function(e) {
-   if (!e.target.closest('.popup-inner') || e.target == popupClose) {
-      this.classList.remove('open');
-   }
-})
 
 
 
@@ -327,11 +336,11 @@ function closePayment() {
 
 // ============  name  ============  //
 
-let name = document.querySelector('#name');
+let userName = document.querySelector('#name');
 let maskOptionsName = {
   mask: /^[A-Za-z -]+$/
 };
-mask = IMask(name, maskOptionsName);
+mask = IMask(userName, maskOptionsName);
 
 // ============  card number  ============  //
 
@@ -378,3 +387,41 @@ let maskOptionsPassword = {
 };
 mask = IMask(password, maskOptionsPassword);
 
+
+
+
+// ============  BURGER MENU  ============  //
+
+
+const sidebarBlock = document.querySelector('.sidebar-block');
+
+burgerMenu.addEventListener('click', function() {
+   sidebarBlock.classList.toggle('show');
+   this.classList.toggle('active');
+})
+
+
+
+
+// ============  POPUP  ============  //
+
+confirmBtn.addEventListener('click', function(e) {
+   e.preventDefault();
+   // проверка на заполнение всех инпутов
+   if (!userName.value == '' && !cardNumber.value.includes('_') && !expirationDate.value.includes('_') && password.value.length == 3) {
+      popup.classList.add('open');
+   } else {
+      paymentError.classList.add('active');
+      setTimeout(hidePaymentError, 3000);
+   }
+})
+
+function hidePaymentError() {
+   paymentError.classList.remove('active');
+}
+
+popup.addEventListener("click", function(e) {
+   if (!e.target.closest('.popup-inner') || e.target == popupClose) {
+      this.classList.remove('open');
+   }
+})

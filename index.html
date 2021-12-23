@@ -95,56 +95,61 @@
                      <img src="img/logo.svg" alt="">
                   </a>
                </div>
-               <nav class="nav">
-                  <ul class="nav-list">
-                     <li class="nav-list__item active">
-                        <a href="#" class="nav-list__link">
-                           <svg class="nav__icon">
-                              <use xlink:href="#icon1"></use>
-                           </svg>
-                        </a>
-                     </li>
-                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link">
-                           <svg class="nav__icon">
-                              <use xlink:href="#icon2"></use>
-                           </svg>
-                        </a>
-                     </li>
-                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link">
-                           <svg class="nav__icon">
-                              <use xlink:href="#icon3"></use>
-                           </svg>
-                        </a>
-                     </li>
-                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link">
-                           <svg class="nav__icon">
-                              <use xlink:href="#icon4"></use>
-                           </svg>
-                        </a>
-                     </li>
-                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link">
-                           <svg class="nav__icon">
-                              <use xlink:href="#icon5"></use>
-                           </svg>
-                        </a>
-                     </li>
-                     <li class="nav-list__item">
-                        <a href="#" class="nav-list__link">
-                           <svg class="nav__icon">
-                              <use xlink:href="#icon6"></use>
-                           </svg>
-                        </a>
-                     </li>
-                  </ul>
-               </nav>
-               <div class="exit">
-                  <svg class="exit__icon">
-                     <use xlink:href="#exit"></use>
-                  </svg>
+               <div class="burger-menu">
+                  <span></span>
+               </div>
+               <div class="sidebar-block">
+                  <nav class="nav">
+                     <ul class="nav-list">
+                        <li class="nav-list__item active">
+                           <a href="#" class="nav-list__link">
+                              <svg class="nav__icon">
+                                 <use xlink:href="#icon1"></use>
+                              </svg>
+                           </a>
+                        </li>
+                        <li class="nav-list__item">
+                           <a href="#" class="nav-list__link">
+                              <svg class="nav__icon">
+                                 <use xlink:href="#icon2"></use>
+                              </svg>
+                           </a>
+                        </li>
+                        <li class="nav-list__item">
+                           <a href="#" class="nav-list__link">
+                              <svg class="nav__icon">
+                                 <use xlink:href="#icon3"></use>
+                              </svg>
+                           </a>
+                        </li>
+                        <li class="nav-list__item">
+                           <a href="#" class="nav-list__link">
+                              <svg class="nav__icon">
+                                 <use xlink:href="#icon4"></use>
+                              </svg>
+                           </a>
+                        </li>
+                        <li class="nav-list__item">
+                           <a href="#" class="nav-list__link">
+                              <svg class="nav__icon">
+                                 <use xlink:href="#icon5"></use>
+                              </svg>
+                           </a>
+                        </li>
+                        <li class="nav-list__item">
+                           <a href="#" class="nav-list__link">
+                              <svg class="nav__icon">
+                                 <use xlink:href="#icon6"></use>
+                              </svg>
+                           </a>
+                        </li>
+                     </ul>
+                  </nav>
+                  <div class="exit">
+                     <svg class="exit__icon">
+                        <use xlink:href="#exit"></use>
+                     </svg>
+                  </div>
                </div>
             </sidebar>
             <div class="central">
@@ -404,6 +409,7 @@
                      <button class="cart__btn">Continue to Payment</button>
                   </div>
                </div>
+               <div class="cart-error">Your cart is empty.</div>
             </div>
             <div class="payment">
                <div class="payment-top">
@@ -448,45 +454,50 @@
                      </div>
                   </div>
                   <form class="form" action="#">
-                     <div class="form-item">
-                        <label class="form__label" for="name">Cardholder Name</label>
-                        <input class="form__input" id="name" name="name" type="text" required>
-                        <!-- <div class="input-error">Invalid name. Use only latin letters.</div> -->
-                     </div>
-                     <div class="form-item">
-                        <label class="form__label" for="card-number">Card Number</label>
-                        <input class="form__input" id="card-number" name="card-number" type="text" required>
-                     </div>
-                     <div class="form-block">
-                        <div class="form-item--half">
-                           <label class="form__label" for="expiration-date">Expiration Date</label>
-                           <input class="form__input form__input--half" id="expiration-date" name="expiration-date" type="text" required>
+                     <div class="form-body">
+                        <div class="form-item">
+                           <label class="form__label" for="name">Cardholder Name</label>
+                           <input class="form__input" id="name" name="name" type="text" required>
+                           <!-- <div class="input-error">Invalid name. Use only latin letters.</div> -->
                         </div>
-                        <div class="form-item--half">
-                           <label class="form__label" for="cvv">CVV</label>
-                           <input class="form__input form__input--half" id="cvv" name="cvv" maxlength="3" type="password" required>
+                        <div class="form-item">
+                           <label class="form__label" for="card-number">Card Number</label>
+                           <input class="form__input" id="card-number" name="card-number" type="text" required>
                         </div>
+                        <div class="form-block">
+                           <div class="form-item--half">
+                              <label class="form__label" for="expiration-date">Expiration Date</label>
+                              <input class="form__input form__input--half" id="expiration-date" name="expiration-date" type="text" required>
+                           </div>
+                           <div class="form-item--half">
+                              <label class="form__label" for="cvv">CVV</label>
+                              <input class="form__input form__input--half" id="cvv" name="cvv" maxlength="3" type="password" required>
+                           </div>
+                        </div>
+                     
+                        <div class="form-block">
+                           <div class="form-item--half">
+                              <label class="form__label" for="type-select">Order Type</label>
+                              <select class="type-select" name="type-select" id="type-select">
+                                 <option value="dine-in">Dine In</option>
+                                 <option value="to-go">To Go</option>
+                                 <option value="delivery">Delivery</option>
+                              </select>
+                           </div>
+                           <div class="form-item--half">
+                              <label class="form__label" for="table-no">Table no.</label>
+                              <input class="form__input form__input--half" name="table-no" type="text" value="140">
+                           </div>
+                        </div>
+                     </div>
+                     
+                     <div class="payment-bottom">
+                        <button class="cancel__btn btn">Cancel</button>
+                        <button type="submit" class="confirm__btn btn">Confirm Payment</button>
                      </div>
                   </form>
-                  <div class="form-block">
-                     <div class="form-item--half">
-                        <label class="form__label" for="type-select">Order Type</label>
-                        <select class="type-select" name="type-select" id="type-select">
-                           <option value="dine-in">Dine In</option>
-                           <option value="to-go">To Go</option>
-                           <option value="delivery">Delivery</option>
-                        </select>
-                     </div>
-                     <div class="form-item--half">
-                        <label class="form__label" for="table-no">Table no.</label>
-                        <input class="form__input form__input--half" name="table-no" type="text" value="140">
-                     </div>
-                  </div>
                </div>
-               <div class="payment-bottom">
-                  <button class="cancel__btn btn">Cancel</button>
-                  <button class="confirm__btn btn">Confirm Payment</button>
-               </div>
+               <div class="payment-error">Fill in all the fields.</div>
             </div>
          </div>
 
