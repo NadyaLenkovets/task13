@@ -17,6 +17,7 @@ const cancelButton = document.querySelector('.cancel__btn');
 const cartError = document.querySelector('.cart-error');
 const paymentError = document.querySelector('.payment-error');
 const burgerMenu = document.querySelector('.burger-menu');
+const sidebar = document.querySelector('.sidebar');
 
 let navListItems = document.querySelectorAll('.nav-list__item');
 let tabNavItems = document.querySelectorAll('.tabs-nav__item');
@@ -398,6 +399,7 @@ const sidebarBlock = document.querySelector('.sidebar-block');
 burgerMenu.addEventListener('click', function() {
    sidebarBlock.classList.toggle('show');
    this.classList.toggle('active');
+   sidebar.classList.toggle('open');
 })
 
 

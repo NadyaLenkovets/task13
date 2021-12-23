@@ -90,9 +90,10 @@ h6 {
   flex: 0 0 8.6%;
   background-color: var(--dark);
   border-radius: 16px 0px 0px 16px;
-  padding: 24px 0px 24px 0px;
+  padding: 24px 0px 0px 0px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 @media (max-width: 1191px) {
@@ -115,6 +116,10 @@ h6 {
   }
 }
 
+.sidebar.open {
+  border-radius: 16px 16px 0px 16px;
+}
+
 .logo {
   padding: 0px 24px 0px;
   margin: 0px 0px 30px 0px;
@@ -132,6 +137,7 @@ h6 {
 
 .sidebar-block {
   transition: opacity 0.3s ease;
+  padding: 0px 0px 24px 0px;
 }
 
 @media (max-width: 600px) {
@@ -141,6 +147,17 @@ h6 {
     z-index: -5;
     opacity: 0;
     visibility: hidden;
+  }
+  .sidebar-block::after {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 100%;
+    background-color: #2D303E;
+    position: absolute;
+    top: 0;
+    right: -15px;
+    border-radius: 0px 0px 16px 0px;
   }
 }
 
@@ -271,7 +288,7 @@ h6 {
 @media (max-width: 600px) {
   .burger-menu {
     display: block;
-    margin: 0 auto 0px;
+    margin: 0 auto 24px;
     width: 30px;
     height: 20px;
     position: relative;
@@ -300,9 +317,6 @@ h6 {
   }
   .burger-menu::after {
     bottom: 0;
-  }
-  .burger-menu.active {
-    margin: 0 auto 24px;
   }
   .burger-menu.active::before {
     transform: rotate(45deg);
