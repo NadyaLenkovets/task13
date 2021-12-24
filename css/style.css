@@ -1000,6 +1000,13 @@ h6 {
   color: var(--accent);
 }
 
+.cart__btn:disabled {
+  background: var(--dark);
+  color: var(--gray);
+  border: 1px solid var(--gray);
+  opacity: 0.5;
+}
+
 .cart-error {
   padding: 10px;
   border-radius: 8px;

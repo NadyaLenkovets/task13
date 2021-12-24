@@ -31,7 +31,7 @@ let dishes = `{
                         "image" : "hot dishes/5.png"
                      },
                      {
-                        "name": "Hot spicy fried rice with omelet",
+                        "name": "Hot spicy fried rice with pork",
                         "price": "3.69",
                         "amount" : "17",
                         "image" : "hot dishes/6.png"

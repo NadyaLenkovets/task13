@@ -153,19 +153,13 @@ function hideError() {
 
 //  ================  CART BUTTON   ================  //
 
-cartButton.addEventListener('click', checkEmptyCart);
+cartButton.addEventListener('click', activatePayment);
 
-function checkEmptyCart() {
-   cartItems = document.getElementsByClassName('cart-item');
-   if (cartItems.length == 0) {
-      cartError.classList.add('active');
-      setTimeout(hideCartError, 3000);
-   } else {
-      frame.classList.add('hidden');
-      payment.classList.add('active');
-      cartBlock.classList.add('active');
-      scrollToPayment();
-   }
+function activatePayment() {
+   frame.classList.add('hidden');
+   payment.classList.add('active');
+   cartBlock.classList.add('active');
+   scrollToPayment();
 }
 
 function scrollToPayment() {
@@ -223,7 +217,7 @@ function collectionClick() {
          let dishName = this.querySelector('.card__name').innerHTML;
          let dishPrice = this.querySelector('.card__price').innerHTML;
          let dishImage = this.querySelector('.card__image img').src;
-         
+
          let dishTemplate = `
             <div class="cart-item">
                <div class="cart-item__content">
@@ -252,16 +246,56 @@ function collectionClick() {
             </div>
          `;
 
-         cart.insertAdjacentHTML('beforeend', dishTemplate);
+         // проверка, есть ли уже такое блюдо в корзине
+         checkDishInCart(dishName, dishTemplate);
+         
+
          activateAmountInputs();
          activateCartItemsDelete();
          subTotalCount();
+         checkEmptyCart();
+
       });
-   }
+   }  
 }
 
 collectionClick();
 
+function checkDishInCart(dishName, dishTemplate) {
+   cartItems = document.getElementsByClassName('cart-item');
+   let flag = false;
+
+   if (cartItems.length != 0) {
+      // flag ;
+      for (let cartItem of cartItems) {
+         if (dishName == cartItem.querySelector('.cart-item__name').innerHTML) {
+            flag = true;
+            cartItem.querySelector('.cart__amount-input').value++;
+            cartItem.querySelector('.cart-item__sum').innerHTML = '$ ' + countSum(cartItem.querySelector('.cart__amount-input').value, convertPrice(cartItem.querySelector('.cart-item__price').innerHTML));
+            // subTotalCount();
+            break;
+         }
+      }
+
+      if (flag == false) {
+         cart.insertAdjacentHTML('beforeend', dishTemplate);
+      }
+  
+   } else {
+      console.log('else2');
+      cart.insertAdjacentHTML('beforeend', dishTemplate);
+   }
+}
+
+
+function checkEmptyCart() {
+   cartItems = document.getElementsByClassName('cart-item');
+   if (cartItems.length == 0) {
+      cartButton.disabled = true;
+   } else {
+      cartButton.disabled = false;
+   }
+}
 
 function convertPrice(string) {
    return result = +string.substr(2);
@@ -279,9 +313,8 @@ function activateAmountInputs() {
    cartAmountInputs = document.getElementsByClassName('cart__amount-input');
    for (let cartAmountInput of cartAmountInputs) {
       cartAmountInput.addEventListener('input', function() {
-         console.log(typeof(this.value));
          if (isNaN(this.value)) {
-            cartError.innerHTML = 'Not a number.'
+            // cartError.innerHTML = 'Not a number.'
             cartError.classList.add('active');
             setTimeout(hideCartError, 3000);
          } else {
@@ -305,10 +338,9 @@ function activateCartItemsDelete() {
       cartItemDelete.addEventListener('click', function() {
          this.parentElement.parentElement.remove();
          subTotalCount();
+         checkEmptyCart();
       })
-      
    };
-   
 };
 
 
