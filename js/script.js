@@ -266,7 +266,6 @@ function checkDishInCart(dishName, dishTemplate) {
    let flag = false;
 
    if (cartItems.length != 0) {
-      // flag ;
       for (let cartItem of cartItems) {
          if (dishName == cartItem.querySelector('.cart-item__name').innerHTML) {
             flag = true;
@@ -282,7 +281,6 @@ function checkDishInCart(dishName, dishTemplate) {
       }
   
    } else {
-      console.log('else2');
       cart.insertAdjacentHTML('beforeend', dishTemplate);
    }
 }
