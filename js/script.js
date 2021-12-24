@@ -169,7 +169,9 @@ function checkEmptyCart() {
 }
 
 function scrollToPayment() {
-   payment.scrollIntoView({behavior: "smooth"});
+   if (document.documentElement.clientWidth < 992) {
+      payment.scrollIntoView({behavior: "smooth"});
+   }
 }
 
 function hideCartError() {
