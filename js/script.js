@@ -271,7 +271,6 @@ function checkDishInCart(dishName, dishTemplate) {
             flag = true;
             cartItem.querySelector('.cart__amount-input').value++;
             cartItem.querySelector('.cart-item__sum').innerHTML = '$ ' + countSum(cartItem.querySelector('.cart__amount-input').value, convertPrice(cartItem.querySelector('.cart-item__price').innerHTML));
-            // subTotalCount();
             break;
          }
       }
